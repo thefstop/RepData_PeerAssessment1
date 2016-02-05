@@ -15,9 +15,9 @@ library(dplyr)
 ```
 
 ```
-## The following objects are masked from 'package:stats':
+## The following object is masked from 'package:stats':
 ## 
-##     filter, lag
+##     filter
 ```
 
 ```
@@ -28,6 +28,10 @@ library(dplyr)
 
 ```r
 library(data.table)
+```
+
+```
+## Warning: package 'data.table' was built under R version 3.1.3
 ```
 
 ```
@@ -43,7 +47,8 @@ library(data.table)
 
 ```r
 library(lattice)
-readData<-read.csv("activity.csv")
+
+readData<-read.csv(unzip("activity.zip"))
 ```
 
 
@@ -162,11 +167,6 @@ appear more uniformly distributed.
 
 
 The mean of this data set is 1.0766189\times 10^{4} and the median is 1.0766189\times 10^{4}. The mean has increased when compared to the first data set, and the median and mean are the same.
-
- 
-
-```
-
 
 
 ## Are there differences in activity patterns between weekdays and weekends?

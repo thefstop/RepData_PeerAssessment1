@@ -13,7 +13,8 @@ output:
 library(dplyr)
 library(data.table)
 library(lattice)
-readData<-read.csv("activity.csv")
+
+readData<-read.csv(unzip("activity.zip"))
 
 
 
@@ -129,11 +130,6 @@ appear more uniformly distributed.
 
 
 The mean of this data set is `r meanComplete` and the median is `r medianComplete`. The mean has increased when compared to the first data set, and the median and mean are the same.
-
- 
-
-```
-
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
