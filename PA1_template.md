@@ -55,7 +55,7 @@ readData<-read.csv(unzip("activity.zip"))
 
 ## What is mean total number of steps taken per day?
 
-1. Calculate the total number of steps taken for each day
+Calculate the total number of steps taken for each day
 
 ```r
 #Organize the data by the date it was collected, then set steps variable to equal the 
@@ -69,7 +69,7 @@ hist(byDate$steps, col = "red", breaks = 10, xlab= "Total Steps Per Day", ylab =
 ![](PA1_template_files/figure-html/histogram1-1.png)
 
 
-2. This historgam shows the total number of steps taken per day
+This historgam shows the total number of steps taken per day
 
 
 ```r
@@ -79,7 +79,7 @@ meanSteps<-mean(byDate$steps)
 #Median steps taken per day 
 medianSteps<-median(byDate$steps)
 ```
-3.The mean number of steps taken per day is 9354.2295082. The median number of steps taken per day is 10395 steps 
+The mean number of steps taken per day is 9354.2295082. The median number of steps taken per day is 10395 steps 
 
 
 
@@ -87,7 +87,7 @@ medianSteps<-median(byDate$steps)
 
 
   
-1. This plot shows the total steps for each 5-minute interval  
+This plot shows the total steps for each 5-minute interval  
 
 ```r
 #Organize by each 5 minute interval, with total for each interval
@@ -107,7 +107,7 @@ with(byMinute, {
 #Determine which interval has the most steps
 mostSteps<-byMinute$interval[which.max(byMinute$steps)]
 ```
-2. The 5-minute inverval with the most steps is 835  
+The 5-minute inverval with the most steps is 835  
 
 
 ## Imputing missing values
@@ -117,9 +117,9 @@ mostSteps<-byMinute$interval[which.max(byMinute$steps)]
 #Caclulate total number of missing data
 totalMissing<- sum(is.na(readData))
 ```
-1. The total number of missing data is 2304
+The total number of missing data is 2304
 
-2. To replace the missing data, we will use the mean for 
+To replace the missing data, we will use the mean for 
 each 5-minute interval. First, we will calcualte the average steps for each interval. Then we will iterate through the data, replacing any missing data with the corresponding average data for that interval.
 
 
@@ -131,7 +131,7 @@ avgSteps<- readData %>% group_by(interval) %>% summarise(steps = mean(steps, na.
 avgTable<-data.table(avgSteps)
 ```
 
-3. The new data set will have the missing data replaced with average values
+The new data set will have the missing data replaced with average values
 
 ```r
 completeData<-readData
@@ -161,7 +161,7 @@ meanComplete<-mean(byDateComplete$steps)
 #Median steps taken per day - 10766.19
 medianComplete<-median(byDateComplete$steps)  
 ```
-4. The histogram differs from the histogram generated with the incomplete data. 
+The histogram differs from the histogram generated with the incomplete data. 
 In this histogram, the frequency of days with no steps at all is reduced, and the data
 appear more uniformly distributed. 
 
@@ -171,7 +171,7 @@ The mean of this data set is 1.0766189\times 10^{4} and the median is 1.0766189\
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-1. Create the factor variable
+Create the factor variable
 
 ```r
 #Create vector of valid weekdays
@@ -196,7 +196,7 @@ byMinuteWeekday<- completeData %>% group_by(interval, Weekday) %>% summarise(ste
 
 ![](PA1_template_files/figure-html/weekdays-1.png)
 
-2. This panel plot shows that the activity level seems to differ on the weekends: the user is not active until later in the day, but appears to have more active events overall. The user also stays active until later in the day on the weekends.
+This panel plot shows that the activity level seems to differ on the weekends: the user is not active until later in the day, but appears to have more active events overall. The user also stays active until later in the day on the weekends.
   
   
   
